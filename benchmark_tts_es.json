@@ -165,7 +165,8 @@
             "mezclaba colores vivos en su paleta",
             "la botella me vino en la bodega durante muchos años",
             "el niño reloj Miraflores de dolores en el campo"
-        ]
+        ],
+        "pitch_variability": 8.726671786852055
     },
     "es/ovos-tts-plugin-cotovia/sabela": {
         "lang": "es",
@@ -333,7 +334,8 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en la bodega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 26.33029620290307
     },
     "es/ovos-tts-plugin-cotovia/iago": {
         "lang": "es",
@@ -501,7 +503,8 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en Agrega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 6.934515081024854
     },
     "es/ovos-tts-plugin-google-tx/default": {
         "lang": "es",
@@ -669,7 +672,8 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en la bodega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 30.5998183589003
     },
     "es/ovos-tts-plugin-piper/carlfm-x-low": {
         "lang": "es",
@@ -951,7 +955,8 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en la bodega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 37.76138332903888
     },
     "es/ovos-tts-plugin-edge-tts/es-ES-AlvaroNeural": {
         "lang": "es",
@@ -1119,7 +1124,8 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en la bodega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 29.027049605563644
     },
     "es/ovos-tts-plugin-edge-tts/es-ES-ElviraNeural": {
         "lang": "es",
@@ -1287,6 +1293,7 @@
             "el pintor mezclaba colores vivos en su paleta",
             "la botella de vino había estado en la bodega durante muchos años",
             "el niño recogía flores de colores en el campo"
-        ]
+        ],
+        "pitch_variability": 25.41323807122284
     }
 }

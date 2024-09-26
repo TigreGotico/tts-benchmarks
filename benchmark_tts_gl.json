@@ -165,7 +165,8 @@
             "o pintor mesturaba cores vivas na súa paleta",
             "a botella de viño estaba na adega dende hai moitos anos",
             "o neno recolle o flores coloridas no campo"
-        ]
+        ],
+        "pitch_variability": 61.31713987619681
     },
     "gl/ovos-tts-plugin-cotovia/iago": {
         "lang": "gl",
@@ -333,7 +334,8 @@
             "o pintor mesturaba cores vivas na súa paleta",
             "a botella de viño estábane audio dende hai moitos anos",
             "ó neno recoller a flores collidas no campo"
-        ]
+        ],
+        "pitch_variability": 6.633468476920664
     },
     "gl/ovos-tts-plugin-cotovia/sabela": {
         "lang": "gl",
@@ -501,7 +503,8 @@
             "o pintor mesturaba cores vivas na súa paleta",
             "a botella de viño estaba nadega dende hai moitos anos",
             "o neno recollía flores coloridas no campo"
-        ]
+        ],
+        "pitch_variability": 29.624101630570713
     },
     "gl/ovos-tts-plugin-nos/sabela": {
         "lang": "gl",
@@ -669,7 +672,8 @@
             "ou inter mesturaba cores vivas na súa paleta",
             "a botella de viño estaba na adega dende hai moitos anos",
             "o neno recollea flores coloridas no campo"
-        ]
+        ],
+        "pitch_variability": 19.855866293555728
     },
     "gl/ovos-tts-plugin-edge-tts/gl-ES-SabelaNeural": {
         "lang": "gl",
@@ -837,7 +841,8 @@
             "o pintor mesturada cores vivas na súa paleta",
             "a botella de viño estaba na adega dende hai moitos anos",
             "o neno recollía flores coloridas no campo"
-        ]
+        ],
+        "pitch_variability": 34.84622760957768
     },
     "gl/ovos-tts-plugin-edge-tts/gl-ES-RoiNeural": {
         "lang": "gl",
@@ -1005,6 +1010,7 @@
             "o pintor mesturaba cores vivas na súa paleta",
             "a botella de viño estaba navega dende hai moitos anos",
             "o neno recollía flores coloridas no campo"
-        ]
+        ],
+        "pitch_variability": 21.010298185706905
     }
 }

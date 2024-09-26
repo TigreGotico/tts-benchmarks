@@ -269,7 +269,8 @@
             "May the wizards juggle five bright boxes over quick fog.",
             "jumping frogs quickly next time Big Man",
             "Victor juggled five bright zig-zag boxes quickly in the fog."
-        ]
+        ],
+        "pitch_variability": 8.796381719068979
     },
     "en/ovos-tts-plugin-google-tx/default": {
         "lang": "en",
@@ -431,7 +432,8 @@
             "zany Wizards juggle five bright boxes over quick fog",
             "jumping frogs quickly vechs five big men",
             "Victor juggled five Brides zig zag boxes quickly in the fog"
-        ]
+        ],
+        "pitch_variability": 35.69206867013828
     },
     "en/ovos-tts-plugin-pico/default": {
         "lang": "en",
@@ -593,7 +595,8 @@
             "Zany Wizards Juggle 5 Bright Boxes Over Quit Fog",
             "Jumping frogs quickly vex five big men.",
             "Victor juggled five bright zigzag boxes quickly in the fog."
-        ]
+        ],
+        "pitch_variability": 28.171474333023692
     },
     "en/ovos-tts-plugin-mimic/ap": {
         "lang": "en",
@@ -755,7 +758,8 @@
             "Jamie Wizards jungle 5 bright boxes over quick pho",
             "jumping frogs quickly X5 big men",
             "Victor jungle five rights exact boxes quickly in the fog"
-        ]
+        ],
+        "pitch_variability": 14.131421073134907
     },
     "en/ovos-tts-plugin-edge-tts/en-GB-RyanNeural": {
         "lang": "en",
@@ -865,11 +869,11 @@
             "/tmp/en_bfff8740a409dc7f7eebfd625d13feff_50ae5017e0f39bbf17ef88c92bd48a73_1382214ff11c97636c0ce63d9bfc0bec.mp3"
         ],
         "failed_synths": [],
-        "wer": 0.40749414519906324,
-        "similarity": 0.8621562897501514,
+        "wer": 0.3981264637002342,
+        "similarity": 0.8667693203727348,
         "transcripts": [
             "the quick brown fox jumps over the lazy dog",
-            "how Razorback Jumpin frogs can level six peek gymnasts",
+            "how Razorback jumping frogs can level six Peak gymnasts",
             "she sells seashells by the seashore",
             "the five boxing Wizards jump quickly",
             "a wizard job is to Vex Champs quickly in fog",
@@ -881,8 +885,8 @@
             "two driven jacks help fax my big quiz",
             "six big Devils from Japan quickly forgot how to waltz",
             "just keep examining every low bid quoted for zinc etchings",
-            "all questions asked by 5 watch expertsss amazed the judge",
-            "Brite Vixens jump Dosey foul quack",
+            "all questions asked by 5 watch experts amazed the judge",
+            "bright Vixens jump Dosey foul quack",
             "jelly beans jump for joy zipping quickly on velvet",
             "Zoe gives quiet love to Charming Bakers when she can",
             "amazingly few discotheques provide jukeboxes",
@@ -894,11 +898,11 @@
             "vampires kill zombies by quacking when we jog near fog",
             "12 big black bugs Bleed Blue Blood",
             "Jack quickly fact his extra prize-winning zebra drugs",
-            "Fred the Vampire Zapped a Quik jabberwock",
+            "Fred the Vampire Zapped a quick jabberwock",
             "Victor quickly makes zinc dabs a blue wax on the Jaguar",
-            "6 bright slugs jumped over my Kwik Fox",
+            "6 bright slugs jumped over my quick Foxx",
             "Chris Jack often for the best price of the wax jokes",
-            "big bad zombies quickly dayzed a few jinxed men",
+            "big bad zombies quickly dazed a few jinxed men",
             "December jinxed my big quilter frogs and wax",
             "glowing fish quickly zipped past the brave Jaguar's mouth",
             "Jinx Wizards pluck foggy chords",
@@ -909,15 +913,16 @@
             "big men",
             "fizzled Quail Jabs waxy box of bright frogs",
             "Jack jumped over five big Grizzle dachshund with zeal",
-            "the brave froggs East 568 boxes quickly",
+            "the brave frogs East 568 boxes quickly",
             "just fix my big Brave quilt of Jinxed frogs",
             "Zoe jabbed her quiet box of bright frogs zigging quickly",
             "it doesn't jumpy frogs Vex the Wizard's big quiz",
             "6 quacking jinxed frogs vexed by Brave lizards",
             "zany Wizards jungle 5 bright boxes over quick fog",
-            "jumping frogs quickly Vex five big men",
+            "Jumpin frogs quickly vexx five big men",
             "Victor juggled 5 bright zigzag boxes quickly in the fog"
-        ]
+        ],
+        "pitch_variability": 29.869004813645383
     },
     "en/ovos-tts-plugin-edge-tts/en-US-AriaNeural": {
         "lang": "en",
@@ -1027,8 +1032,8 @@
             "/tmp/en_7e4ce63af659b0c8c0da7f5611c41b83_cffd8c3322a3f4feed032901d0cd2e45_1382214ff11c97636c0ce63d9bfc0bec.mp3"
         ],
         "failed_synths": [],
-        "wer": 0.39344262295081966,
-        "similarity": 0.8712268685118271,
+        "wer": 0.3911007025761124,
+        "similarity": 0.8719969878803292,
         "transcripts": [
             "the quick brown fox jumps over the lazy dog",
             "how Razorback jumping frogs can level six Peak gymnasts",
@@ -1059,7 +1064,7 @@
             "Fred the Vampire Zapped a Quik jabberwock",
             "dabs of blue wax on the Jaguar",
             "6 bright slugs jumped over my quick Fox",
-            "quiz Jac often for the best prize of the wax jugs",
+            "quiz Jack often for the best prize of the wax jugs",
             "big bad zombies quickly dazed a few Jinx men",
             "the zebra jinxed my big quilt of frogs and wax",
             "glowing fish quickly zipped past the brave Jaguar's mouth",
@@ -1076,10 +1081,11 @@
             "Zoe jabbed her quiet box of bright frogs zigging quickly",
             "a dozen jumpy frogs Vex the Wizard's big quiz",
             "6 cracking jinxed frogs vexed by Brave lizards",
-            "zany Wizards juggle 5 bright boxes over quick Fogg",
+            "zany Wizards juggle 5 bright boxes over quick fog",
             "big men",
             "Victor juggled five bright zigzag boxes quickly in the fog"
-        ]
+        ],
+        "pitch_variability": 39.82547334876451
     },
     "en/ovos-tts-plugin-edge-tts/en-AU-NatashaNeural": {
         "lang": "en",
@@ -1189,8 +1195,8 @@
             "/tmp/en_3dd995ca48edae51104d30d3daf77730_8a3f003e03b20a4f0416d6523d16d6b8_1382214ff11c97636c0ce63d9bfc0bec.mp3"
         ],
         "failed_synths": [],
-        "wer": 0.44730679156908665,
-        "similarity": 0.7979308893388388,
+        "wer": 0.4496487119437939,
+        "similarity": 0.7979686822337746,
         "transcripts": [
             "the quick brown fox jumps over the lazy dog",
             "how Razorback jumping frogs can level six Peak gymnasts",
@@ -1200,12 +1206,12 @@
             "pack my box with five dozen liquor jugs",
             "Jack quietly moved up front and sees the big ball of Wax",
             "big Shaq swimming Foster grab cold fish now",
-            "crazy Frederik bought many very Exquisite opal jewels",
+            "crazy Frederick bought many very Exquisite opal jewels",
             "the job requires extra pluck and Zeal from every young wage earner",
             "two driven Jax help fax my big quiz",
             "six big Devils from Japan quickly forgot how to walls",
             "zinc etchings",
-            "all questions asked by 5 watch experts amazed the judge",
+            "all questions asked by 5 watch xperts amazed the judge",
             "Bright vixen's jump. Dozy foul quack.",
             "jelly beans jump for joy zipping quickly on velvet",
             "Zoe gives quiet love to Charming Bakers when she can",
@@ -1241,7 +1247,8 @@
             "is there any Wizards jungle 5 bright boxes over quick fog",
             "jumping frogs quickly Vex five big men",
             "Victor juggled 5 bright zigzag boxes quickly in the fog"
-        ]
+        ],
+        "pitch_variability": 49.3664630021618
     },
     "en/ovos-tts-plugin-edge-tts/en-NG-AbeoNeural": {
         "lang": "en",
@@ -1351,8 +1358,8 @@
             "/tmp/en_561edcbef8f10bfbf63db9822381fe36_764da420cebc2cc77dc611e7007072c4_1382214ff11c97636c0ce63d9bfc0bec.mp3"
         ],
         "failed_synths": [],
-        "wer": 0.4964871194379391,
-        "similarity": 0.7818376277720887,
+        "wer": 0.49414519906323184,
+        "similarity": 0.7846657502144642,
         "transcripts": [
             "the quick brown fox jumps over the lazy dog",
             "how is about jumping frogs can level six pick gymnast",
@@ -1371,17 +1378,17 @@
             "bright Vincent's jump Dosey Foulk",
             "jelly beans jump for joy zipping quickly on velvet",
             "Zoe gives quite love to Charmaine Bakers when she can",
-            "ahhmazingly few discotheques provide jukeboxes",
+            "amazingly few discotheques provide jukeboxes",
             "we promptly judge antique ivory buckles for the next price",
             "5 questions that was just my wax bed",
             "the wizard quickly Jinx the Gnomes before they vaporized",
             "DJ Pig Fox zebra and my wolf squawk",
             "mix up with object and voice huge broken jaw",
-            "vampires kill zombies by walking when we jog near fuck",
+            "vampires kill zombies by walking when we jog near fog",
             "12 big black box Bleed Blue Blood",
             "Jack quickly faxed his extra price when is the projects",
             "Fred the Vampire Zapped a Quik jabberwock",
-            "victoire quickly mixing dabs of blue wax on the Jaguar",
+            "Victor quickly mixing dabs of blue wax on the Jaguar",
             "6 bright slugs jumped over my quick Fox",
             "who is Jack often for the best price of the wax trucks",
             "big bad zombies quickly does the few Jinx man",
@@ -1393,16 +1400,17 @@
             "five brave men jungle Swords by the hazy fog",
             "mixed jumping zebras with brave tigers in quiet Fork",
             "quickly versus five big men",
-            "physical Jabs waxy box of bright frogs",
+            "physical jobs waxy box of bright frogs",
             "Jack jumped over 5 degrees old oxen with sale",
             "debris frog 656 boxes quickly",
             "just fix my big brief quote of jinx frogs",
             "Zoe Jabba quiet box of bright frogs singing quickly",
             "it doesn't jumpy frogs Vex the Wizards big quiz",
             "6:12 jeans frogs vexed by Brave lizards",
-            "is there any wizard jogo 5 bright boxes over quick fuc",
+            "is there any wizard jogo 5 bright boxes over quick fuck",
             "jumping frogs quickly Vex 5 big men",
             "Victor jogo 5 bright zigzag boxes quickly in the fuck"
-        ]
+        ],
+        "pitch_variability": 22.929534065188268
     }
 }

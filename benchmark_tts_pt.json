@@ -162,7 +162,8 @@
             "as ondas do mar batiam nas rochas com força",
             "A raposa escondeu-se atrás dos arbustos para escapar ao caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 29.726526770730306
     },
     "pt-br/ovos-tts-plugin-google-tx/default": {
         "lang": "pt-br",
@@ -327,7 +328,8 @@
             "as ondas do mar batio nas rochas com força",
             "A raposa escondeu-se atrás dos arbustos para escapar ao caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 28.202494801662603
     },
     "pt-br/ovos-tts-plugin-espeak/default": {
         "lang": "pt-br",
@@ -492,7 +494,8 @@
             "Amor de tomar batidas roxas com fogos.",
             "A japona escondeu-se atrás dos arbustos para escapar ao caçador.",
             "As crianças ouvidam a história com a atenção e curiosidade."
-        ]
+        ],
+        "pitch_variability": 8.084625677051344
     },
     "pt-pt/ovos-tts-plugin-espeak/default": {
         "lang": "pt-pt",
@@ -657,7 +660,8 @@
             "É bom que tu mande a tia das rochas com fogo, sr.",
             "A repouna chudeu-se atrás de uma debusta churrasca para o caçador.",
             "As crianças ouvidam a história, cometendo-se a curiosidade."
-        ]
+        ],
+        "pitch_variability": 6.852410124293784
     },
     "pt-pt/ovos-tts-plugin-edge-tts/pt-PT-DuarteNeural": {
         "lang": "pt-pt",
@@ -822,7 +826,8 @@
             "as ondas do mar bateu nas rochas com força",
             "A raposa escondeu-se atrás dos arbustos para escapar ao caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 20.205347796450333
     },
     "pt-pt/ovos-tts-plugin-edge-tts/pt-PT-RaquelNeural": {
         "lang": "pt-pt",
@@ -987,7 +992,8 @@
             "as ondas do mar batio nas rochas com força",
             "há raposas quando eu se atrás dos arbustos para escapar ao caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 30.080243383631792
     },
     "pt-br/ovos-tts-plugin-edge-tts/pt-BR-AntonioNeural": {
         "lang": "pt-br",
@@ -1152,7 +1158,8 @@
             "as ondas do mar Batista nas rochas com força",
             "a raposa respondeu se atrás dos arbustos para escapar ao caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 31.733332457858232
     },
     "pt-br/ovos-tts-plugin-edge-tts/pt-BR-FranciscaNeural": {
         "lang": "pt-br",
@@ -1264,8 +1271,8 @@
             "/tmp/pt-br_1033cdde8cf219946fb708764b28bb34_d1c6f24d409537df3ca8fb1227530805_9b6316f96e1f57aea793fa3e77806b45.mp3"
         ],
         "failed_synths": [],
-        "wer": 0.31222707423580787,
-        "similarity": 0.9284808174879196,
+        "wer": 0.3165938864628821,
+        "similarity": 0.9268808174879196,
         "transcripts": [
             "Arrábida raposa castanha saltou sobre o cão preguiçoso",
             "sete patos brancos na davam no lago calmo",
@@ -1303,7 +1310,7 @@
             "os jovens acamparam junto ao rio e fizeram uma fogueira",
             "o peixe grelhado Estava delicioso temperado com limão e ervas",
             "o Luís comprou uma bicicleta nova para suas voltas pela aldeia",
-            "o violino da Filipa tem um som suave encantador",
+            "o violino da Filipa tem unção suave encantador",
             "o Rui arrumou os livros na prateleira da sala",
             "o relógio antigo da vó tocava cada meia-hora",
             "a Inês plantou rosas no canteiro em frente à casa",
@@ -1317,6 +1324,7 @@
             "as ondas do mar batiam nas rochas com força",
             "A raposa escondeu-se atrás dos arbustos para escapar o caçador",
             "as crianças ouviram a história com atenção e curiosidade"
-        ]
+        ],
+        "pitch_variability": 38.61050166027255
     }
 }

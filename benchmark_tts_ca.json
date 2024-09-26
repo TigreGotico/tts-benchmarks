@@ -112,7 +112,7 @@
         ],
         "failed_synths": [],
         "wer": 0.5947136563876652,
-        "similarity": 0.6747992819165154,
+        "similarity": 0.6752661353245453,
         "transcripts": [
             "i la ràpida diner amb els altres sobre el nostre tros.",
             "vinga nogalines",
@@ -152,7 +152,7 @@
             "Les petites barques volen ser javes o volen volar-nos de llac.",
             "que l'amor va arribar al cim després d'una llarga caminada.",
             "joventut",
-            "No et pas el càl·lule de menú, filaç plau.",
+            "No et pas el càl·lule de menú, filaç frau.",
             "i orgies fortes de Cali de Setmana.",
             "El nen rei rei de l'Empírica, el rei de la llibertat, el rei de la llibertat, el rei de la llibertat.",
             "El forné preparava pretzels frescos per al mercat del cap de setmana.",
@@ -165,7 +165,8 @@
             "El pintor vegeix a la culòs, vius a la seva pelleta.",
             "La botella de lliure estava a la botella des de fa molts anys.",
             "El nen retullirà flors de culòs del camp."
-        ]
+        ],
+        "pitch_variability": 9.07748310670094
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/balear/quim": {
         "lang": "ca",
@@ -333,7 +334,8 @@
             "el pintor barrejava cou les rius a la seva palata",
             "la gotera devia estava l'albadada des de fa molts anys",
             "el nen recoller flors de coves al camp"
-        ]
+        ],
+        "pitch_variability": 20.10484107694957
     },
     "ca/ovos-tts-plugin-google-tx/default": {
         "lang": "ca",
@@ -501,7 +503,8 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella de vi estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 34.36100031583815
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/balear/olga": {
         "lang": "ca",
@@ -669,7 +672,8 @@
             "el pintor barrejava que les vius a la seva palata",
             "la gotera de havia estava el de bodega des de fa molts anys",
             "el nen racó i flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 23.726011074472915
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/nord-occidental/pere": {
         "lang": "ca",
@@ -837,7 +841,8 @@
             "el pintor barrejava colors vius a la seua paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 18.77041332227827
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/central/elia": {
         "lang": "ca",
@@ -1005,7 +1010,8 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 26.206275265300928
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/valencia/gina": {
         "lang": "ca",
@@ -1173,7 +1179,8 @@
             "el pintor barrejava colors vius a la seua paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 38.880245689923065
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/central/grau": {
         "lang": "ca",
@@ -1341,7 +1348,8 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 23.263093959022235
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/nord-occidental/emma": {
         "lang": "ca",
@@ -1509,7 +1517,8 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella deviatava la bodega des de fa molts anys",
             "el nen recollirà flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 30.67228157184291
     },
     "ca/ovos-tts-plugin-matxa-multispeaker-cat/valencia/lluc": {
         "lang": "ca",
@@ -1677,7 +1686,8 @@
             "el pintor barrejava colors vius a la seua paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 19.040599785320456
     },
     "ca/ovos-tts-plugin-edge-tts/ca-ES-JoanaNeural": {
         "lang": "ca",
@@ -1845,7 +1855,8 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella devia estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 42.637347542201574
     },
     "ca/ovos-tts-plugin-edge-tts/ca-ES-EnricNeural": {
         "lang": "ca",
@@ -2013,6 +2024,7 @@
             "el pintor barrejava colors vius a la seva paleta",
             "la botella de vi estava a la bodega des de fa molts anys",
             "el nen recollia flors de colors al camp"
-        ]
+        ],
+        "pitch_variability": 26.217373359707498
     }
 }
