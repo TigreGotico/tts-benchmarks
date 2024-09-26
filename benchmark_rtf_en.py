@@ -3,33 +3,16 @@ import random
 import time
 
 from json_database import JsonStorage
-from ovos_plugin_manager.templates.stt import STT
 from ovos_plugin_manager.utils.tts_cache import hash_sentence
-from ovos_stt_plugin_chromium import ChromiumSTT
-from ovos_stt_plugin_fasterwhisper import FasterWhisperSTT
-from ovos_tts_plugin_matxa_multispeaker_cat import MatxaCatalanTTSPlugin
+from ovos_tts_plugin_espeakng import EspeakNGTTS
+from ovos_tts_plugin_google_tx import GoogleTranslateTTS
 from ovos_tts_plugin_mimic import MimicTTSPlugin
 from ovos_tts_plugin_pico import PicoTTS
-from ovos_tts_plugin_nos import NosTTSPlugin
-from ovos_tts_plugin_espeakng import EspeakNGTTS
 from ovos_tts_plugin_piper import PiperTTSPlugin
-from ovos_tts_plugin_cotovia import CotoviaTTSPlugin
-from ovos_tts_plugin_google_tx import GoogleTranslateTTS
 from pydub import AudioSegment
 from tqdm import tqdm  # Progress bar
 
-db = JsonStorage("benchmark_tts.json")
-cache = JsonStorage("stt_cache.json")
-
-# Initialize STT
-# stt: STT = OVOSHTTPServerSTT({})
-stt = ChromiumSTT({})
-stt2: STT = FasterWhisperSTT({"model": "large-v3",
-                              # "use_cuda": True,
-                              # "compute_type": "float16",
-                              "beam_size": 5,
-                              "cpu_threads": 12
-                              })
+db = JsonStorage("benchmark_tts_en.json")
 
 
 def get_audio_duration(audio_path: str) -> float:
@@ -73,38 +56,19 @@ def get_rtf(sentences: list, lang: str, plug, voice: str = None):
     return rtf, wavs, failed
 
 
-
-
-
-_NOS = NosTTSPlugin(config={})
-_MATXA = MatxaCatalanTTSPlugin(config={})
 _PIPER = PiperTTSPlugin(config={})
 
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    #("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, ["en", "es", "de", "fr", "it", "ca", "nl", "pt", "eu"]),
-    ("ovos-tts-plugin-pico", PicoTTS(config={}), None, ["en", "de", "fr", "it"]),
-    ("ovos-tts-plugin-nos", _NOS, "celtia", ["gl"]),
-    ("ovos-tts-plugin-nos", _NOS, "sabela", ["gl"]),
-    #("ovos-tts-plugin-piper", _PIPER, "tugao-medium", ["pt"]),
+    ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, ["en"]),
+    ("ovos-tts-plugin-pico", PicoTTS(config={}), None, ["en"]),
     ("ovos-tts-plugin-piper", _PIPER, "alan-low", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]),
-    ("ovos-tts-plugin-piper", _PIPER, "carlfm-x-low", ["es"]),
-    ("ovos-tts-plugin-cotovia", _NOS.cotovia, "sabela", ["gl", "es"]),
-    ("ovos-tts-plugin-cotovia", _NOS.cotovia, "iago", ["gl", "es"]),
-    ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["en", "es", "de", "fr", "it", "ca", "nl", "pt", "eu"]),
-    ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", ["en"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "central/grau", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "central/elia", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "balear/quim", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "balear/olga", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "valencia/lluc", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "valencia/gina", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "nord-occidental/pere", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "nord-occidental/emma", ["ca"]),
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]),
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]),
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]),
+    ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["en"]),
+    ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", ["en"])
 ]
 random.shuffle(PLUGINS)
 SYSTEM = {"cpu_count": os.cpu_count()}
@@ -127,8 +91,10 @@ for plugin_name, tts, voice, langs in PLUGINS:
         # Load sentences for the language
         sentences_file = f"{lang}_sentences.txt"
         if not os.path.isfile(sentences_file):
-            print(f"Warning: File '{sentences_file}' not found. Skipping {lang}.")
-            continue
+            sentences_file = f"{lang.split('-')[0]}_sentences.txt"
+            if not os.path.isfile(sentences_file):
+                print(f"Warning: File '{sentences_file}' not found. Skipping {lang}.")
+                continue
         with open(sentences_file) as f:
             sentences = [l for l in f.read().split("\n") if l.strip()]
 
@@ -144,4 +110,3 @@ for plugin_name, tts, voice, langs in PLUGINS:
         db[tts_id]["wavs"] = wavs
         db[tts_id]["failed_synths"] = failed
         db.store()
-

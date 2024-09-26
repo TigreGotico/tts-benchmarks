@@ -1,26 +1,23 @@
 import os
-import random
-import time
 
 from jiwer import wer  # To calculate WER (Word Error Rate)
 from json_database import JsonStorage
 from ovos_plugin_manager.templates.stt import STT
-from ovos_plugin_manager.utils.tts_cache import hash_sentence
 from ovos_stt_plugin_chromium import ChromiumSTT
 from ovos_stt_plugin_fasterwhisper import FasterWhisperSTT
+from ovos_tts_plugin_espeakng import EspeakNGTTS
+from ovos_tts_plugin_google_tx import GoogleTranslateTTS
 from ovos_tts_plugin_matxa_multispeaker_cat import MatxaCatalanTTSPlugin
 from ovos_tts_plugin_mimic import MimicTTSPlugin
-from ovos_tts_plugin_pico import PicoTTS
 from ovos_tts_plugin_nos import NosTTSPlugin
-from ovos_tts_plugin_espeakng import EspeakNGTTS
+from ovos_tts_plugin_pico import PicoTTS
 from ovos_tts_plugin_piper import PiperTTSPlugin
-from ovos_tts_plugin_cotovia import CotoviaTTSPlugin
-from ovos_tts_plugin_google_tx import GoogleTranslateTTS
 from pydub import AudioSegment
 from speech_recognition import Recognizer, AudioFile
 from tqdm import tqdm  # Progress bar
+from ovos_utils.parse import fuzzy_match, MatchStrategy
 
-db = JsonStorage("benchmark_tts.json")
+db = JsonStorage("benchmark_tts_gl.json")
 cache = JsonStorage("stt_cache.json")
 
 # Initialize STT
@@ -48,6 +45,13 @@ def get_WER(wavs, sentences, lang):
             if wav in cache:
                 transcripts.append(cache[wav])
                 continue
+            if wav.endswith(".mp3"):
+                if not os.path.isfile(f"{wav}.wav"):
+                    print(f"converting .mp3 to .wav : {wav}")
+                    sound = AudioSegment.from_mp3(wav)
+                    sound.export(f"{wav}.wav", format="wav")
+                wav = f"{wav}.wav"
+
             with AudioFile(wav) as source:
                 rec = Recognizer()
                 audio = rec.record(source)
@@ -64,54 +68,36 @@ def get_WER(wavs, sentences, lang):
     transcripts = [t if t else "NULL" for t in transcripts]
     # Calculate WER (Word Error Rate) using jiwer
     score = wer(sentences, transcripts)
-    return transcripts, score
+    score2 = sum([fuzzy_match(t, t2, MatchStrategy.DAMERAU_LEVENSHTEIN_SIMILARITY)
+              for t, t2 in zip(sentences, transcripts)])/len(sentences)
+    return transcripts, score, score2
 
 
 def get_markdown_table(LANG_STATS, specs):
     # Generate markdown table based on the results
     table = "## OVOS TTS Plugins Benchmarks\n\n"
     # TODO- update
-    table += "| **Lang** | **Plugin** | **Voice** | **RTF (Real Time Factor)** | **WER (STT Agreement Score)**  |\n"
-    table += "|----------|------------|-----------|----------------------------|----------------------------------------|\n"
+    table += "| **Lang** | **Plugin** | **Voice** | **RTF (Real Time Factor)** | **WER**  | **DAMERAU LEVENSHTEIN SIMILARITY**  |\n"
+    table += "|----------|------------|-----------|----------------------------|------------|----------------------------|\n"
 
     for lang, stats in LANG_STATS.items():
         for stat in stats:
-            table += f"| {lang} | {stat['plugin']} | {stat['voice'] or 'Default'} | {stat['RTF']:.4f} | {stat['WER']:.4f}  |\n"
+            table += f"| {lang} | {stat['plugin']} | {stat['voice'] or 'Default'} | {stat['RTF']:.4f} | {stat['WER']:.4f} | {stat['similarity']:.4f}  |\n"
 
     return table
 
 
-_NOS = NosTTSPlugin(config={})
-_MATXA = MatxaCatalanTTSPlugin(config={})
-_PIPER = PiperTTSPlugin(config={})
 
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    #("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, ["en", "es", "de", "fr", "it", "ca", "nl", "pt", "eu"]),
-    ("ovos-tts-plugin-pico", PicoTTS(config={}), None, ["en", "de", "fr", "it"]),
-    ("ovos-tts-plugin-nos", _NOS, "celtia", ["gl"]),
-    ("ovos-tts-plugin-nos", _NOS, "sabela", ["gl"]),
-    #("ovos-tts-plugin-piper", _PIPER, "tugao-medium", ["pt"]),
-    ("ovos-tts-plugin-piper", _PIPER, "alan-low", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]),
-    #("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]),
-    ("ovos-tts-plugin-piper", _PIPER, "carlfm-x-low", ["es"]),
-    ("ovos-tts-plugin-cotovia", _NOS.cotovia, "sabela", ["gl", "es"]),
-    ("ovos-tts-plugin-cotovia", _NOS.cotovia, "iago", ["gl", "es"]),
-    ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["en", "es", "de", "fr", "it", "ca", "nl", "pt", "eu"]),
-    ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", ["en"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "central/grau", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "central/elia", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "balear/quim", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "balear/olga", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "valencia/lluc", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "valencia/gina", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "nord-occidental/pere", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", _MATXA, "nord-occidental/emma", ["ca"]),
+    ("ovos-tts-plugin-nos", None, "celtia", ["gl"]),
+    ("ovos-tts-plugin-nos", None, "sabela", ["gl"]),
+    ("ovos-tts-plugin-cotovia",None, "sabela", ["gl"]),
+    ("ovos-tts-plugin-cotovia",None, "iago", ["gl"])
 ]
-#random.shuffle(PLUGINS)
+
+# random.shuffle(PLUGINS)
 SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
@@ -125,6 +111,8 @@ for plugin_name, tts, voice, langs in PLUGINS:
             db[tts_id] = {"lang": lang, "plugin": plugin_name, "voice": voice}
         print(db[tts_id])
 
+        if "wer" in db[tts_id]:
+            continue  # already calculated
         # Initialize language stats
         if lang not in LANG_STATS:
             LANG_STATS[lang] = []
@@ -141,20 +129,24 @@ for plugin_name, tts, voice, langs in PLUGINS:
 
         # Calculate STT Agreement Score (WER)
         try:
-            transcripts, score = get_WER(wavs=db[tts_id]["wavs"],
+            transcripts, score, score2 = get_WER(wavs=db[tts_id]["wavs"],
                                          sentences=sentences,
                                          lang=lang)
-        except:
+        except Exception as e:
+            print("e")
             continue
         print(f"WER for {plugin_name} in {lang}: {score}")
+        print(f"DAMERAU_LEVENSHTEIN_SIMILARITY for {plugin_name} in {lang}: {score2}")
         print("Transcripts:", transcripts)
         db[tts_id]["wer"] = score
+        db[tts_id]["similarity"] = score2
         db[tts_id]["transcripts"] = transcripts
         db.store()
 
         # Store results for the language
         LANG_STATS[lang].append({"RTF": db[tts_id]["rtf"],
                                  "WER": db[tts_id]["wer"],
+                                 "similarity": db[tts_id]["similarity"],
                                  "plugin": plugin_name,
                                  "voice": voice})
         db.store()
