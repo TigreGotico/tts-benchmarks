@@ -25,9 +25,9 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-coqui", 'tts_models/it/mai_female/vits', [LANG]),
         ("ovos-tts-plugin-coqui", 'tts_models/it/mai_male/glow-tts', [LANG]),
         ("ovos-tts-plugin-coqui", 'tts_models/it/mai_female/glow-tts', [LANG]),
-        ("ovos-tts-plugin-pico", None, [LANG]),
-        ("ovos-tts-plugin-google-tx", None, [LANG]),
-        ("ovos-tts-plugin-espeak", None, [LANG])
+        ("ovos-tts-plugin-pico", "pico", [LANG]),
+        ("ovos-tts-plugin-google-tx", "google", [LANG]),
+        ("ovos-tts-plugin-espeak", "robot", [LANG])
     ]
 
     benchmark_wer(LANG, PLUGINS)

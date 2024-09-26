@@ -15,10 +15,8 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-coqui", CoquiTTSPlugin(lang=LANG), 'tts_models/pt/cv/vits', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-PT-DuarteNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-PT-RaquelNeural', [LANG]),
-        ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-BR-AntonioNeural', ["pt-br"]),
-        ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-BR-FranciscaNeural', ["pt-br"]),
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG, "pt-br"]),
-        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["pt-br", LANG])
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
+        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), "robot", [LANG])
     ]
 
     benchmark_rtf(LANG, PLUGINS)

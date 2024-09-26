@@ -1,4 +1,5 @@
-from benchmark_wer import benchmark_wer
+from gather_dataset import gather_dataset
+
 
 if __name__ == "__main__":
     LANG = "ca"
@@ -10,7 +11,8 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-edge-tts", 'ca-ES-JoanaNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", 'ca-ES-EnricNeural', [LANG]),
         ("ovos-tts-plugin-google-tx", "google", [LANG]),
-        ("ovos-tts-plugin-espeak", "robot", [LANG]),
+
+      #  ("ovos-tts-plugin-espeak", "robot", [LANG]),
         ("ovos-tts-plugin-matxa-multispeaker-cat", "central/grau", [LANG]),
         ("ovos-tts-plugin-matxa-multispeaker-cat", "central/elia", [LANG]),
         ("ovos-tts-plugin-matxa-multispeaker-cat", "balear/quim", [LANG]),
@@ -21,4 +23,4 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-matxa-multispeaker-cat", "nord-occidental/emma", [LANG]),
     ]
 
-    benchmark_wer(LANG, PLUGINS)
+    gather_dataset(LANG, PLUGINS, outfolder="/home/miro/PycharmProjects/tts-bench-dataset/dataset")

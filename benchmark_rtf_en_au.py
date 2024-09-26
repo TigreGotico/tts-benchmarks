@@ -10,7 +10,7 @@ if __name__ == "__main__":
     # Define plugins
     PLUGINS = [
         # ("plugin_name", TTS_plugin_instance, voice, langs)
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-AU-NatashaNeural", [LANG])
     ]
 

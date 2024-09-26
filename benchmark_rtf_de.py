@@ -14,9 +14,9 @@ if __name__ == "__main__":
             "model": 'tts_models/de/thorsten/vits'}), 'tts_models/de/thorsten/vits', [LANG]),
         ("ovos-tts-plugin-coqui", CoquiTTSPlugin(lang=LANG, config={
             "model": 'tts_models/de/thorsten/vits--neon'}), 'tts_models/de/thorsten/vits--neon', [LANG]),
-        ("ovos-tts-plugin-pico", PicoTTS(config={}), None, [LANG]),
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),
-        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, [LANG])
+        ("ovos-tts-plugin-pico", PicoTTS(config={}), "pico", [LANG]),
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
+        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), "robot", [LANG])
     ]
 
     benchmark_rtf(LANG, PLUGINS)

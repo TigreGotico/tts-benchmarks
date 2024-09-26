@@ -19,12 +19,12 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-coqui", CoquiTTSPlugin(lang=LANG), 'tts_models/es/css10/vits', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'es-ES-AlvaroNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'es-ES-ElviraNeural', [LANG]),
-        ("ovos-tts-plugin-pico", PicoTTS(config={}), None, [LANG]),
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),
+        ("ovos-tts-plugin-pico", PicoTTS(config={}), "pico", [LANG]),
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
         # ("ovos-tts-plugin-piper", _PIPER, "carlfm-x-low", [LANG]),
         ("ovos-tts-plugin-cotovia", _NOS.cotovia, "sabela", [LANG]),
         ("ovos-tts-plugin-cotovia", _NOS.cotovia, "iago", [LANG]),
-        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, [LANG])
+        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), "robot", [LANG])
     ]
 
     benchmark_rtf(LANG, PLUGINS)

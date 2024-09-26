@@ -22,8 +22,22 @@ def benchmark_rtf(lang: str, PLUGINS: list):
         failed = []
 
         for s in tqdm(sentences, desc=f"Generating TTS for {plug}/{lang}/{voice}", unit="sentence"):
-            wav_path = f"/tmp/{lang}_{hash_sentence(str(voice))}_{hash_sentence(repr(plug))}_{hash_sentence(s)}.{plug.audio_ext}"
+            old_path = f"/tmp/{lang}_{hash_sentence(str(voice))}_{hash_sentence(repr(plug))}_{hash_sentence(s)}.{plug.audio_ext}"
+            wav_path = f"/tmp/{lang}_{hash_sentence(str(voice))}_{hash_sentence(plug.plugin_name)}_{hash_sentence(s)}.{plug.audio_ext}"
+            if os.path.isfile(old_path):
+                import shutil
+                print("migrating", old_path, wav_path)
+                shutil.move(old_path, wav_path)
             if os.path.isfile(wav_path):
+                print("file exists", wav_path)
+                if wav_path.endswith(".mp3"):
+                    if not os.path.isfile(f"{wav_path}.wav"):
+                        print(f"converting .mp3 to .wav : {wav_path}")
+                        try:
+                            sound = AudioSegment.from_mp3(wav_path)
+                            sound.export(f"{wav_path}.wav", format="wav")
+                        except:
+                            print(f"failed! bad file? {wav_path}")
                 continue
             # Measure the synthesis time
             start_time = time.time()
@@ -54,6 +68,7 @@ def benchmark_rtf(lang: str, PLUGINS: list):
 
     # Iterate over plugins and languages
     for plugin_name, tts, voice, langs in PLUGINS:
+        tts.plugin_name = plugin_name
         for lang in langs:
 
             tts_id = f"{lang}/{plugin_name}/{voice or 'default'}"

@@ -16,8 +16,8 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-SAM", SAMTTS(), None, [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-GB-RyanNeural", [LANG]),
         ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", [LANG]),
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),
-        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, [LANG])
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
+        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), "robot", [LANG])
     ]
 
     benchmark_rtf(LANG, PLUGINS)

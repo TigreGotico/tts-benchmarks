@@ -13,8 +13,8 @@ if __name__ == "__main__":
         # ("plugin_name", TTS_plugin_instance, voice, langs)
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-BR-AntonioNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'pt-BR-FranciscaNeural', [LANG]),
-        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),
-        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, [LANG])
+        ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), "google", [LANG]),
+        ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), "robot", [LANG])
     ]
 
     benchmark_rtf(LANG, PLUGINS)
