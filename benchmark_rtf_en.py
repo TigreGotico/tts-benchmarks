@@ -1,9 +1,9 @@
 import os
-import random
 import time
 
 from json_database import JsonStorage
 from ovos_plugin_manager.utils.tts_cache import hash_sentence
+from ovos_tts_plugin_edge_tts import EdgeTTSPlugin
 from ovos_tts_plugin_espeakng import EspeakNGTTS
 from ovos_tts_plugin_google_tx import GoogleTranslateTTS
 from ovos_tts_plugin_mimic import MimicTTSPlugin
@@ -36,6 +36,7 @@ def get_rtf(sentences: list, lang: str, plug, voice: str = None):
             plug.get_tts(s, wav_file=wav_path, lang=lang, voice=voice)
         except Exception as e:
             print(f"ERROR with sentence '{s}' : {e}")
+            # raise
             failed.append(s)
             continue
         synth_time = time.time() - start_time
@@ -61,16 +62,21 @@ _PIPER = PiperTTSPlugin(config={})
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]), # Process finished with exit code 137 (interrupted by signal 9:SIGKILL)
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]), # Process finished with exit code 137 (interrupted by signal 9:SIGKILL)
+    # ("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]), # Process finished with exit code 137 (interrupted by signal 9:SIGKILL)
+    # ("ovos-tts-plugin-piper", _PIPER, "alan-low", ["en"]),
+
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-GB-RyanNeural", ["en"]),
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-US-AriaNeural", ["en"]),
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-AU-NatashaNeural", ["en"]),
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), "en-NG-AbeoNeural", ["en"]),
+    ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", ["en"]),
     ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, ["en"]),
     ("ovos-tts-plugin-pico", PicoTTS(config={}), None, ["en"]),
-    ("ovos-tts-plugin-piper", _PIPER, "alan-low", ["en"]),
-    # ("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]),
-    # ("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]),
-    # ("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]),
-    ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["en"]),
-    ("ovos-tts-plugin-mimic", MimicTTSPlugin(config={}), "ap", ["en"])
+    ("ovos-tts-plugin-espeak", EspeakNGTTS(config={}), None, ["en"])
 ]
-random.shuffle(PLUGINS)
+
 SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
@@ -100,13 +106,13 @@ for plugin_name, tts, voice, langs in PLUGINS:
 
         db[tts_id]["sentences"] = sentences
 
-        if "rtf" in db[tts_id]:
+        if "rtf" in db[tts_id] and not db[tts_id].get("failed_synths", []):
             continue
         # Calculate RTF and generate audio
         rtf, wavs, failed = get_rtf(sentences=sentences, lang=lang, plug=tts, voice=voice)
         print(f"RTF for {plugin_name} in {lang}: {rtf}")
         print("Generated WAV files:", wavs)
-        db[tts_id]["rtf"] = rtf
+        db[tts_id]["rtf"] = min(rtf, db[tts_id].get("rtf", float("inf")))
         db[tts_id]["wavs"] = wavs
         db[tts_id]["failed_synths"] = failed
         db.store()

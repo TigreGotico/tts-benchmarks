@@ -4,12 +4,9 @@ import time
 
 from json_database import JsonStorage
 from ovos_plugin_manager.utils.tts_cache import hash_sentence
-from ovos_tts_plugin_espeakng import EspeakNGTTS
-from ovos_tts_plugin_google_tx import GoogleTranslateTTS
+from ovos_tts_plugin_edge_tts import EdgeTTSPlugin
 from ovos_tts_plugin_matxa_multispeaker_cat import MatxaCatalanTTSPlugin
-from ovos_tts_plugin_mimic import MimicTTSPlugin
 from ovos_tts_plugin_nos import NosTTSPlugin
-from ovos_tts_plugin_pico import PicoTTS
 from ovos_tts_plugin_piper import PiperTTSPlugin
 from pydub import AudioSegment
 from tqdm import tqdm  # Progress bar
@@ -31,7 +28,8 @@ def get_rtf(sentences: list, lang: str, plug, voice: str = None):
 
     for s in tqdm(sentences, desc=f"Generating TTS for {plug}/{lang}/{voice}", unit="sentence"):
         wav_path = f"/tmp/{lang}_{hash_sentence(str(voice))}_{hash_sentence(repr(plug))}_{hash_sentence(s)}.{plug.audio_ext}"
-
+        if os.path.isfile(wav_path):
+            continue
         # Measure the synthesis time
         start_time = time.time()
         try:
@@ -65,6 +63,8 @@ _PIPER = PiperTTSPlugin(config={})
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'gl-ES-SabelaNeural', ["gl"]),
+    ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'gl-ES-RoiNeural', ["gl"]),
     ("ovos-tts-plugin-nos", _NOS, "celtia", ["gl"]),
     ("ovos-tts-plugin-nos", _NOS, "sabela", ["gl"]),
     ("ovos-tts-plugin-cotovia", _NOS.cotovia, "sabela", ["gl"]),
@@ -100,13 +100,13 @@ for plugin_name, tts, voice, langs in PLUGINS:
 
         db[tts_id]["sentences"] = sentences
 
-        if "rtf" in db[tts_id]:
+        if "rtf" in db[tts_id] and not db[tts_id].get("failed_synths", []):
             continue
         # Calculate RTF and generate audio
         rtf, wavs, failed = get_rtf(sentences=sentences, lang=lang, plug=tts, voice=voice)
         print(f"RTF for {plugin_name} in {lang}: {rtf}")
         print("Generated WAV files:", wavs)
-        db[tts_id]["rtf"] = rtf
+        db[tts_id]["rtf"] = min(rtf, db[tts_id].get("rtf", float("inf")))
         db[tts_id]["wavs"] = wavs
         db[tts_id]["failed_synths"] = failed
         db.store()

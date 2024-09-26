@@ -24,12 +24,6 @@ stt2: STT = FasterWhisperSTT({"model": "large-v3",
                               })
 
 
-def get_audio_duration(audio_path: str) -> float:
-    """Get the duration of an audio file in seconds."""
-    audio = AudioSegment.from_file(audio_path)
-    return len(audio) / 1000.0  # Convert milliseconds to seconds
-
-
 def get_WER(wavs, sentences, lang):
     # STT Agreement Score - WER of STT transcription (google/fasterwhisper large V3)
     transcripts = []
@@ -83,6 +77,10 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
+    ("ovos-tts-plugin-edge-tts", None, 'pt-PT-DuarteNeural', ["pt-pt"]),
+    ("ovos-tts-plugin-edge-tts", None, 'pt-PT-RaquelNeural', ["pt-pt"]),
+    ("ovos-tts-plugin-edge-tts", None, 'pt-BR-AntonioNeural', ["pt-br"]),
+    ("ovos-tts-plugin-edge-tts", None, 'pt-BR-FranciscaNeural', ["pt-br"]),
     ("ovos-tts-plugin-google-tx", None, None, ["pt-pt", "pt-br"]),
     ("ovos-tts-plugin-espeak", None, None, ["pt-pt", "pt-br"])
 ]

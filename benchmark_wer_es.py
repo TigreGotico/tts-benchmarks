@@ -5,17 +5,10 @@ from json_database import JsonStorage
 from ovos_plugin_manager.templates.stt import STT
 from ovos_stt_plugin_chromium import ChromiumSTT
 from ovos_stt_plugin_fasterwhisper import FasterWhisperSTT
-from ovos_tts_plugin_espeakng import EspeakNGTTS
-from ovos_tts_plugin_google_tx import GoogleTranslateTTS
-from ovos_tts_plugin_matxa_multispeaker_cat import MatxaCatalanTTSPlugin
-from ovos_tts_plugin_mimic import MimicTTSPlugin
-from ovos_tts_plugin_nos import NosTTSPlugin
-from ovos_tts_plugin_pico import PicoTTS
-from ovos_tts_plugin_piper import PiperTTSPlugin
+from ovos_utils.parse import fuzzy_match, MatchStrategy
 from pydub import AudioSegment
 from speech_recognition import Recognizer, AudioFile
 from tqdm import tqdm  # Progress bar
-from ovos_utils.parse import fuzzy_match, MatchStrategy
 
 db = JsonStorage("benchmark_tts_es.json")
 cache = JsonStorage("stt_cache.json")
@@ -29,12 +22,6 @@ stt2: STT = FasterWhisperSTT({"model": "large-v3",
                               "beam_size": 5,
                               "cpu_threads": 12
                               })
-
-
-def get_audio_duration(audio_path: str) -> float:
-    """Get the duration of an audio file in seconds."""
-    audio = AudioSegment.from_file(audio_path)
-    return len(audio) / 1000.0  # Convert milliseconds to seconds
 
 
 def get_WER(wavs, sentences, lang):
@@ -69,7 +56,7 @@ def get_WER(wavs, sentences, lang):
     # Calculate WER (Word Error Rate) using jiwer
     score = wer(sentences, transcripts)
     score2 = sum([fuzzy_match(t, t2, MatchStrategy.DAMERAU_LEVENSHTEIN_SIMILARITY)
-              for t, t2 in zip(sentences, transcripts)])/len(sentences)
+                  for t, t2 in zip(sentences, transcripts)]) / len(sentences)
     return transcripts, score, score2
 
 
@@ -86,16 +73,19 @@ def get_markdown_table(LANG_STATS, specs):
 
     return table
 
+
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-pico",None, None, ["es"]),
+    ("ovos-tts-plugin-edge-tts", None,  'es-ES-AlvaroNeural', ["es"]),
+    ("ovos-tts-plugin-edge-tts", None,  'es-ES-ElviraNeural', ["es"]),
+    ("ovos-tts-plugin-pico", None, None, ["es"]),
     ("ovos-tts-plugin-piper", None, "carlfm-x-low", ["es"]),
     ("ovos-tts-plugin-google-tx", None, None, ["es"]),
     ("ovos-tts-plugin-piper", None, "carlfm-x-low", ["es"]),
-    ("ovos-tts-plugin-cotovia", None,"sabela", ["es"]),
+    ("ovos-tts-plugin-cotovia", None, "sabela", ["es"]),
     ("ovos-tts-plugin-cotovia", None, "iago", ["es"]),
-    ("ovos-tts-plugin-espeak",None, None, ["es"])
+    ("ovos-tts-plugin-espeak", None, None, ["es"])
 ]
 
 # random.shuffle(PLUGINS)
@@ -131,8 +121,8 @@ for plugin_name, _, voice, langs in PLUGINS:
         # Calculate STT Agreement Score (WER)
         try:
             transcripts, score, score2 = get_WER(wavs=db[tts_id]["wavs"],
-                                         sentences=sentences,
-                                         lang=lang)
+                                                 sentences=sentences,
+                                                 lang=lang)
         except Exception as e:
             print("e")
             continue
