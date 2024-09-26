@@ -6,6 +6,7 @@ if __name__ == "__main__":
     # Define plugins
     PLUGINS = [
         # ("plugin_name", TTS_plugin_instance, voice, langs)
+        ("ovos-tts-plugin-coqui", 'tts_models/ca/custom/vits', [LANG]),
         ("ovos-tts-plugin-edge-tts", 'ca-ES-JoanaNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", 'ca-ES-EnricNeural', [LANG]),
         ("ovos-tts-plugin-google-tx", None, [LANG]),

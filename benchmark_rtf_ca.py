@@ -8,6 +8,7 @@ if __name__ == "__main__":
     from ovos_tts_plugin_matxa_multispeaker_cat import MatxaCatalanTTSPlugin
     from ovos_tts_plugin_nos import NosTTSPlugin
     from ovos_tts_plugin_piper import PiperTTSPlugin
+    from ovos_tts_plugin_coqui import CoquiTTSPlugin
 
     LANG = "ca"
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
     # Define plugins
     PLUGINS = [
         # ("plugin_name", TTS_plugin_instance, voice, langs)
-
+        ("ovos-tts-plugin-coqui", CoquiTTSPlugin(lang=LANG), 'tts_models/ca/custom/vits', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'ca-ES-JoanaNeural', [LANG]),
         ("ovos-tts-plugin-edge-tts", EdgeTTSPlugin(config={}), 'ca-ES-EnricNeural', [LANG]),
         ("ovos-tts-plugin-google-tx", GoogleTranslateTTS(config={}), None, [LANG]),

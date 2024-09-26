@@ -11,5 +11,6 @@ if __name__ == "__main__":
         ("ovos-tts-plugin-pico", None, [LANG]),
         ("ovos-tts-plugin-espeak", None, [LANG]),
         ("ovos-tts-plugin-mimic", "ap", [LANG]),
+        ("ovos-tts-plugin-SAM", None, [LANG]),
     ]
     benchmark_wer(LANG, PLUGINS)
