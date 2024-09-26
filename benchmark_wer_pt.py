@@ -106,12 +106,12 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-edge-tts", None, 'pt-PT-DuarteNeural', ["pt-pt"]),
-    ("ovos-tts-plugin-edge-tts", None, 'pt-PT-RaquelNeural', ["pt-pt"]),
-    ("ovos-tts-plugin-edge-tts", None, 'pt-BR-AntonioNeural', ["pt-br"]),
-    ("ovos-tts-plugin-edge-tts", None, 'pt-BR-FranciscaNeural', ["pt-br"]),
-    ("ovos-tts-plugin-google-tx", None, None, ["pt-pt", "pt-br"]),
-    ("ovos-tts-plugin-espeak", None, None, ["pt-pt", "pt-br"])
+    ("ovos-tts-plugin-edge-tts", 'pt-PT-DuarteNeural', ["pt-pt"]),
+    ("ovos-tts-plugin-edge-tts", 'pt-PT-RaquelNeural', ["pt-pt"]),
+    ("ovos-tts-plugin-edge-tts", 'pt-BR-AntonioNeural', ["pt-br"]),
+    ("ovos-tts-plugin-edge-tts", 'pt-BR-FranciscaNeural', ["pt-br"]),
+    ("ovos-tts-plugin-google-tx", None, ["pt-pt", "pt-br"]),
+    ("ovos-tts-plugin-espeak", None, ["pt-pt", "pt-br"])
 ]
 
 # random.shuffle(PLUGINS)
@@ -119,7 +119,7 @@ SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
 # Iterate over plugins and languages
-for plugin_name, _, voice, langs in PLUGINS:
+for plugin_name, voice, langs in PLUGINS:
     for lang in langs:
         # Initialize language stats
         if lang not in LANG_STATS:

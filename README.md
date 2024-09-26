@@ -17,14 +17,14 @@
 
 | **Lang** | **Plugin**                | **Voice**           | **RTF (Real Time Factor)** | **WER** | **DAMERAU LEVENSHTEIN SIMILARITY** | **Pitch Variability** |
 |----------|---------------------------|---------------------|----------------------------|---------|------------------------------------|-----------------------|
-| en       | ovos-tts-plugin-edge-tts  | en-GB-RyanNeural    | 0.3508                     | 0.3981  | 0.8668                             | 29.8690               |
-| en       | ovos-tts-plugin-edge-tts  | en-US-AriaNeural    | 0.1931                     | 0.3911  | 0.8720                             | 39.8255               |
-| en       | ovos-tts-plugin-edge-tts  | en-AU-NatashaNeural | 0.1889                     | 0.4496  | 0.7980                             | 49.3665               |
-| en       | ovos-tts-plugin-edge-tts  | en-NG-AbeoNeural    | 0.6393                     | 0.4941  | 0.7847                             | 22.9295               |
+| en-gb    | ovos-tts-plugin-edge-tts  | en-GB-RyanNeural    | 0.2093                     | 0.3981  | 0.8656                             | 29.8690               |
+| en-gb    | ovos-tts-plugin-mimic     | ap                  | 0.0225                     | 0.6721  | 0.6721                             | 14.1314               |
+| en-us    | ovos-tts-plugin-edge-tts  | en-US-AriaNeural    | 0.1512                     | 0.3934  | 0.8713                             | 39.8255               |
+| en-au    | ovos-tts-plugin-edge-tts  | en-AU-NatashaNeural | 0.1316                     | 0.4473  | 0.7974                             | 49.3665               |
+| en-ng    | ovos-tts-plugin-edge-tts  | en-NG-AbeoNeural    | 0.1959                     | 0.4941  | 0.7830                             | 22.9295               |
 | en       | ovos-tts-plugin-google-tx | Default             | 0.1026                     | 0.4426  | 0.8359                             | 35.6921               |
 | en       | ovos-tts-plugin-pico      | Default             | 0.0115                     | 0.2365  | 0.8933                             | 28.1715               |
 | en       | ovos-tts-plugin-espeak    | Default             | 0.0021                     | 0.5995  | 0.6137                             | 8.7964                |
-| en       | ovos-tts-plugin-mimic     | ap                  | 0.0237                     | 0.6721  | 0.6721                             | 14.1314               |
 
 #### Catalan
 
@@ -78,3 +78,28 @@
 | pt-br    | ovos-tts-plugin-edge-tts  | pt-BR-FranciscaNeural | 0.3377                     | 0.3166  | 0.9269                             | 38.6105               |
 | pt-br    | ovos-tts-plugin-google-tx | Default               | 0.0850                     | 0.2904  | 0.9348                             | 28.2025               |
 | pt-br    | ovos-tts-plugin-espeak    | Default               | 0.0019                     | 0.4301  | 0.7515                             | 8.0846                |
+
+#### French
+
+| **Lang** | **Plugin**                | **Voice** | **RTF (Real Time Factor)** | **WER** | **DAMERAU LEVENSHTEIN SIMILARITY** | **Pitch Variability** |
+|----------|---------------------------|-----------|----------------------------|---------|------------------------------------|-----------------------|
+| fr       | ovos-tts-plugin-pico      | Default   | 0.0132                     | 0.2894  | 0.9090                             | 23.9790               |
+| fr       | ovos-tts-plugin-google-tx | Default   | 0.1160                     | 0.2702  | 0.9271                             | 20.5534               |
+| fr       | ovos-tts-plugin-espeak    | Default   | 0.0022                     | 0.4000  | 0.7775                             | 8.0871                |
+
+#### Italian
+
+| **Lang** | **Plugin**                | **Voice** | **RTF (Real Time Factor)** | **WER** | **DAMERAU LEVENSHTEIN SIMILARITY** | **Pitch Variability** |
+|----------|---------------------------|-----------|----------------------------|---------|------------------------------------|-----------------------|
+| it       | ovos-tts-plugin-pico      | Default   | 0.0110                     | 0.2595  | 0.9471                             | 31.1569               |
+| it       | ovos-tts-plugin-google-tx | Default   | 0.1058                     | 0.2476  | 0.9551                             | 18.5573               |
+| it       | ovos-tts-plugin-espeak    | Default   | 0.0021                     | 0.2595  | 0.8885                             | 8.4683                |
+
+#### German
+
+| **Lang** | **Plugin**                | **Voice** | **RTF (Real Time Factor)** | **WER** | **DAMERAU LEVENSHTEIN SIMILARITY** | **Pitch Variability** |
+|----------|---------------------------|-----------|----------------------------|---------|------------------------------------|-----------------------|
+| de       | ovos-tts-plugin-pico      | Default   | 0.0145                     | 0.2871  | 0.9276                             | 31.3136               |
+| de       | ovos-tts-plugin-google-tx | Default   | 0.1078                     | 0.2635  | 0.9476                             | 33.7422               |
+| de       | ovos-tts-plugin-espeak    | Default   | 0.0020                     | 0.2541  | 0.8319                             | 8.9455                |
+

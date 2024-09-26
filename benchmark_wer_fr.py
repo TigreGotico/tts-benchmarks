@@ -12,7 +12,7 @@ from pydub import AudioSegment
 from speech_recognition import Recognizer, AudioFile
 from tqdm import tqdm  # Progress bar
 
-db = JsonStorage("benchmark_tts_gl.json")
+db = JsonStorage("benchmark_tts_fr.json")
 cache = JsonStorage("stt_cache.json")
 
 # Initialize STT
@@ -94,7 +94,7 @@ def get_markdown_table(LANG_STATS, specs):
     # Generate markdown table based on the results
     table = "## OVOS TTS Plugins Benchmarks\n\n"
     table += "| **Lang** | **Plugin** | **Voice** | **RTF (Real Time Factor)** | **WER**  | **DAMERAU LEVENSHTEIN SIMILARITY**  | **Pitch Variability**  |\n"
-    table += "|----------|------------|-----------|----------------------------|------------|------------|----------------|\n"
+    table += "|----------|------------|-----------|----------------------------|------------|-------------|---------------|\n"
 
     for lang, stats in LANG_STATS.items():
         for stat in stats:
@@ -106,12 +106,9 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-edge-tts", 'gl-ES-SabelaNeural', ["gl"]),
-    ("ovos-tts-plugin-edge-tts", 'gl-ES-RoiNeural', ["gl"]),
-    ("ovos-tts-plugin-nos", "celtia", ["gl"]),
-    ("ovos-tts-plugin-nos", "sabela", ["gl"]),
-    ("ovos-tts-plugin-cotovia", "sabela", ["gl"]),
-    ("ovos-tts-plugin-cotovia", "iago", ["gl"])
+    ("ovos-tts-plugin-pico", None, ["fr"]),
+    ("ovos-tts-plugin-google-tx", None, ["fr"]),
+    ("ovos-tts-plugin-espeak", None, ["fr"])
 ]
 
 # random.shuffle(PLUGINS)
@@ -142,15 +139,14 @@ for plugin_name, voice, langs in PLUGINS:
                                      "plugin": plugin_name,
                                      "voice": voice})
             continue  # already calculated
-        # Initialize language stats
-        if lang not in LANG_STATS:
-            LANG_STATS[lang] = []
 
         # Load sentences for the language
         sentences_file = f"{lang}_sentences.txt"
         if not os.path.isfile(sentences_file):
-            print(f"Warning: File '{sentences_file}' not found. Skipping {lang}.")
-            continue
+            sentences_file = f"{lang.split('-')[0]}_sentences.txt"
+            if not os.path.isfile(sentences_file):
+                print(f"Warning: File '{sentences_file}' not found. Skipping {lang}.")
+                continue
         with open(sentences_file) as f:
             sentences = [l for l in f.read().split("\n") if l.strip()]
 

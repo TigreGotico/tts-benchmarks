@@ -106,15 +106,14 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-edge-tts", None, 'es-ES-AlvaroNeural', ["es"]),
-    ("ovos-tts-plugin-edge-tts", None, 'es-ES-ElviraNeural', ["es"]),
-    ("ovos-tts-plugin-pico", None, None, ["es"]),
-    ("ovos-tts-plugin-piper", None, "carlfm-x-low", ["es"]),
-    ("ovos-tts-plugin-google-tx", None, None, ["es"]),
-    ("ovos-tts-plugin-piper", None, "carlfm-x-low", ["es"]),
-    ("ovos-tts-plugin-cotovia", None, "sabela", ["es"]),
-    ("ovos-tts-plugin-cotovia", None, "iago", ["es"]),
-    ("ovos-tts-plugin-espeak", None, None, ["es"])
+    ("ovos-tts-plugin-edge-tts", 'es-ES-AlvaroNeural', ["es"]),
+    ("ovos-tts-plugin-edge-tts", 'es-ES-ElviraNeural', ["es"]),
+    ("ovos-tts-plugin-pico", None, ["es"]),
+    ("ovos-tts-plugin-piper", "carlfm-x-low", ["es"]),
+    ("ovos-tts-plugin-google-tx", None, ["es"]),
+    ("ovos-tts-plugin-cotovia", "sabela", ["es"]),
+    ("ovos-tts-plugin-cotovia", "iago", ["es"]),
+    ("ovos-tts-plugin-espeak", None, ["es"])
 ]
 
 # random.shuffle(PLUGINS)
@@ -122,7 +121,7 @@ SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
 # Iterate over plugins and languages
-for plugin_name, _, voice, langs in PLUGINS:
+for plugin_name, voice, langs in PLUGINS:
     for lang in langs:
         # Initialize language stats
         if lang not in LANG_STATS:

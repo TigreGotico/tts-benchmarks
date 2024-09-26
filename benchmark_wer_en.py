@@ -106,19 +106,19 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-edge-tts", None, "en-GB-RyanNeural", ["en"]),
-    ("ovos-tts-plugin-edge-tts", None, "en-US-AriaNeural", ["en"]),
-    ("ovos-tts-plugin-edge-tts", None, "en-AU-NatashaNeural", ["en"]),
-    ("ovos-tts-plugin-edge-tts", None, "en-NG-AbeoNeural", ["en"]),
+    ("ovos-tts-plugin-edge-tts", "en-GB-RyanNeural", ["en-gb"]),
+    ("ovos-tts-plugin-edge-tts", "en-US-AriaNeural", ["en-us"]),
+    ("ovos-tts-plugin-edge-tts", "en-AU-NatashaNeural", ["en-au"]),
+    ("ovos-tts-plugin-edge-tts", "en-NG-AbeoNeural", ["en-ng"]),
 
-    ("ovos-tts-plugin-google-tx", None, None, ["en"]),
-    ("ovos-tts-plugin-pico", None, None, ["en"]),
-    ("ovos-tts-plugin-piper", None, "alan-low", ["en"]),
+    ("ovos-tts-plugin-google-tx", None, ["en"]),
+    ("ovos-tts-plugin-pico", None, ["en"]),
+    ("ovos-tts-plugin-piper", "alan-low", ["en-gb"]),
     # ("ovos-tts-plugin-piper", _PIPER, "ryan-low", ["en"]),
     # ("ovos-tts-plugin-piper", _PIPER, "ryan-medium", ["en"]),
     # ("ovos-tts-plugin-piper", _PIPER, "ryan-high", ["en"]),
-    ("ovos-tts-plugin-espeak", None, None, ["en"]),
-    ("ovos-tts-plugin-mimic", None, "ap", ["en"]),
+    ("ovos-tts-plugin-espeak", None, ["en"]),
+    ("ovos-tts-plugin-mimic", "ap", ["en-gb"]),
 ]
 
 # random.shuffle(PLUGINS)
@@ -126,7 +126,7 @@ SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
 # Iterate over plugins and languages
-for plugin_name, _, voice, langs in PLUGINS:
+for plugin_name, voice, langs in PLUGINS:
     for lang in langs:
         # Initialize language stats
         if lang not in LANG_STATS:

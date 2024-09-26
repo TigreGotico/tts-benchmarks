@@ -106,18 +106,18 @@ def get_markdown_table(LANG_STATS, specs):
 # Define plugins
 PLUGINS = [
     # ("plugin_name", TTS_plugin_instance, voice, langs)
-    ("ovos-tts-plugin-edge-tts", None, 'ca-ES-JoanaNeural', ["ca"]),
-    ("ovos-tts-plugin-edge-tts", None, 'ca-ES-EnricNeural', ["ca"]),
-    ("ovos-tts-plugin-google-tx", None, None, ["ca"]),
-    ("ovos-tts-plugin-espeak", None, None, ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "central/grau", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "central/elia", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "balear/quim", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "balear/olga", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "valencia/lluc", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "valencia/gina", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "nord-occidental/pere", ["ca"]),
-    ("ovos-tts-plugin-matxa-multispeaker-cat", None, "nord-occidental/emma", ["ca"]),
+    ("ovos-tts-plugin-edge-tts", 'ca-ES-JoanaNeural', ["ca"]),
+    ("ovos-tts-plugin-edge-tts", 'ca-ES-EnricNeural', ["ca"]),
+    ("ovos-tts-plugin-google-tx", None, ["ca"]),
+    ("ovos-tts-plugin-espeak", None, ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "central/grau", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "central/elia", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "balear/quim", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "balear/olga", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "valencia/lluc", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "valencia/gina", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "nord-occidental/pere", ["ca"]),
+    ("ovos-tts-plugin-matxa-multispeaker-cat", "nord-occidental/emma", ["ca"]),
 ]
 
 # random.shuffle(PLUGINS)
@@ -125,7 +125,7 @@ SYSTEM = {"cpu_count": os.cpu_count()}
 LANG_STATS = {}
 
 # Iterate over plugins and languages
-for plugin_name, _, voice, langs in PLUGINS:
+for plugin_name, voice, langs in PLUGINS:
     for lang in langs:
         # Initialize language stats
         if lang not in LANG_STATS:
